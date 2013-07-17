@@ -8,6 +8,10 @@ gem 'rails', '3.2.13'
 gem 'better_errors'
 gem 'mysql2'
 gem "paperclip", "~> 3.0"
+gem 'attachment_on_the_fly'
+gem 'paperclip-meta' 
+gem 'pry'
+gem 'pry-nav'
 
 
 # Gems used only for assets and not required

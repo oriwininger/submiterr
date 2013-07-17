@@ -40,15 +40,11 @@ class ApplicationsController < ApplicationController
   # POST /applications.json
   def create
     @application = Application.new(params[:application])
-    redirect_to applications_index_path
-    respond_to do |format|
-      if @application.save
-        format.html { redirect_to @application, notice: 'Application was successfully created.' }
-        format.json { render json: @application, status: :created, location: @application }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @application.errors, status: :unprocessable_entity }
-      end
+    @application.status = "waiting"
+    if @application.save
+      redirect_to applications_path
+    else
+      render action: "new"
     end
   end
 

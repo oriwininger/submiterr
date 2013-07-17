@@ -1,4 +1,4 @@
-<%= form_for(:application) do |f| %>
+<%= form_for @application do |f| %>
   <% if @application.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@application.errors.count, "error") %> prohibited this application from being saved:</h2>
@@ -11,6 +11,16 @@
     </div>
   <% end %>
   <div class="form">
+      <%= f.text_field :full_name %></br>
+      country :
+      <%= f.text_field :country %></br>
+      city :
+      <%= f.text_field :city %></br>
+      linkdin URL :
+     <%= f.text_field :linkdin %></br>
+     job :
+      <%= f.text_field :job %></br>
+      pdf file :
      <%= f.file_field :attachment %>
   </div>
 

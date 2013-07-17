@@ -1,7 +1,5 @@
 Submiterr::Application.routes.draw do
-  resources :applications do
-  get '/applications/new', :on => :new
- end
+  resources :applications
   root :to => 'applications#index'
 
 
