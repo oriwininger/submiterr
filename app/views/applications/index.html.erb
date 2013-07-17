@@ -8,6 +8,7 @@
   </tr>
 
 <% @applications.each do |application| %>
+  <%= @application.attachment %>
   <tr>
     <td><%= link_to 'Show', application %></td>
     <td><%= link_to 'Edit', edit_application_path(application) %></td>

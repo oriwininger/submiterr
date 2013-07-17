@@ -1,5 +1,8 @@
 Submiterr::Application.routes.draw do
-  resources :applications
+  resources :applications do
+  get '/applications/new', :on => :new
+ end
+  root :to => 'applications#index'
 
 
   # The priority is based upon order of creation:

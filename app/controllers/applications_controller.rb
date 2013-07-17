@@ -3,7 +3,6 @@ class ApplicationsController < ApplicationController
   # GET /applications.json
   def index
     @applications = Application.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @applications }
@@ -41,7 +40,7 @@ class ApplicationsController < ApplicationController
   # POST /applications.json
   def create
     @application = Application.new(params[:application])
-
+    redirect_to applications_index_path
     respond_to do |format|
       if @application.save
         format.html { redirect_to @application, notice: 'Application was successfully created.' }
