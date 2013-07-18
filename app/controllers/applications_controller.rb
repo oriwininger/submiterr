@@ -23,6 +23,7 @@ class ApplicationsController < ApplicationController
   # GET /applications/new
   # GET /applications/new.json
   def new
+    job = nil
     @application = Application.new
 
     respond_to do |format|
@@ -39,9 +40,10 @@ class ApplicationsController < ApplicationController
   # POST /applications
   # POST /applications.json
   def create
-    @application = Application.new(params[:application])
-    @application.status = "waiting"
-    if @application.save
+    application = Application.new(params[:application])
+
+    application.status = "waiting"
+    if application.save
       redirect_to applications_path
     else
       render action: "new"
@@ -74,5 +76,19 @@ class ApplicationsController < ApplicationController
       format.html { redirect_to applications_url }
       format.json { head :no_content }
     end
+  end
+
+  def hide
+  @application = Application.find(params[:id])
+    @application.status = "hide"
+    @application.save
+    redirect_to root_path
+  end
+
+  def approve
+  @application = Application.find(params[:id])
+    @application.status = "approved"
+    @application.save
+    redirect_to root_path
   end
 end

@@ -13,3 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function (argument) {
+	$('.submit-application').hover(
+		$('.submit-application').tooltip("ori"))
+})

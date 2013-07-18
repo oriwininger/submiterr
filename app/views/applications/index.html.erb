@@ -1,4 +1,4 @@
-<h1>Listing applications</h1>
+<h2>Job Applications</h2>
 <table class="table table-hover">
       <thead>
         <tr>
@@ -10,25 +10,33 @@
           <th>Linkedin</th>
           <th>Status</th>
           <th>Actions</th>
-        </tr>
+          </tr>
       </thead>
       <tbody>
   <% @applications.each do |application| %>
-    <% if application.status == "waiting" %>
+    <% if application.status != "hide" %>
        <tr>
           <td><%= application.full_name %></td>
           <td><%= "#{application.country if application.country}, #{application.city if application.city}" %></td>
           <td><%= application.job %></td>
           <td><%= time_ago_in_words(application.created_at) %></td>
-          <td>h</td>
+          <td></td>
           <td><%= application.linkedin %></td>
           <td><%= application.status %></td>
-          <td>
-          <select>
-            <option onchange="href=http://www.fiverr.com" >fiverr</option>
-            <option href="ori">ori</option>
-          </select>
-          </td>    
+          <td><div class="btn-group">
+            <button class="btn">Actions</button>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+             </button>
+            <ul class="dropdown-menu">
+                <li class="divider"></li>
+                <li><%= link_to 'approve', approve_application_path(application) %></li>
+     <!-- dropdown menu links begining -->
+              <li><%= link_to 'delete', application_path(application),
+            :confirm => 'Are you sure?', :method => :delete, :class => 'text-error' %><%= link_to 'hide', hide_application_path(application) %></li>
+     <!-- dropdown menu links end -->
+               </ul>
+          </div></td> 
         </tr>
         <% end %>
     <% end %>

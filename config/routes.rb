@@ -1,6 +1,8 @@
 Submiterr::Application.routes.draw do
   resources :applications
   root :to => 'applications#index'
+  match 'applications/hide/:id' => 'applications#hide', :as => :hide_application
+  match 'applications/approve/:id' => 'applications#approve', :as => :approve_application
 
 
   # The priority is based upon order of creation:

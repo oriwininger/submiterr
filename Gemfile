@@ -12,7 +12,7 @@ gem 'attachment_on_the_fly'
 gem 'paperclip-meta' 
 gem 'pry'
 gem 'pry-nav'
-
+gem 'pry-debugger'
 
 # Gems used only for assets and not required
 # in production environments by default.
