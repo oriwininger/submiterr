@@ -1,34 +1,38 @@
 <h1>Listing applications</h1>
-<table class="table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Region & Country</th>
-                  <th>Job</th>
-                  <th>Time Created</th>
-                  <th>PDF file</th>
-                  <th>Linkdin</th>
-                  <th>Status</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-          <% @applications.each do |application| %>
-               <tr class="info">
-                  <td><%= application.full_name %></td>
-                  <td><%= application.country + "," + application.city %></td>
-                  <td><%= application.job %></td>
-                  <td><%= time_ago_in_words(application.created_at) %></td>
-                  <td>----</td>
-                  <td><%= application.linkdin %></td>
-                  <td><%= application.status %></td>
-                  <td><a href="<% application.status = "hide" %>" >hide</a></td>    
-                </tr>
-              </tbody>
-            </table>
-            <% end %>
-
-
-<br />
+<table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Region & Country</th>
+          <th>Job</th>
+          <th>Time Created</th>
+          <th>PDF file</th>
+          <th>Linkedin</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+  <% @applications.each do |application| %>
+    <% if application.status == "waiting" %>
+       <tr>
+          <td><%= application.full_name %></td>
+          <td><%= "#{application.country if application.country}, #{application.city if application.city}" %></td>
+          <td><%= application.job %></td>
+          <td><%= time_ago_in_words(application.created_at) %></td>
+          <td>h</td>
+          <td><%= application.linkedin %></td>
+          <td><%= application.status %></td>
+          <td>
+          <select>
+            <option onchange="href=http://www.fiverr.com" >fiverr</option>
+            <option href="ori">ori</option>
+          </select>
+          </td>    
+        </tr>
+        <% end %>
+    <% end %>
+      </tbody>
+    </table>
 
 <%= link_to 'New Application', new_application_path %>
